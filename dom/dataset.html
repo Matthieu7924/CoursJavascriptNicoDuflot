@@ -15,20 +15,101 @@
             let pDataModule = qSAll('p[data-module]');
             console.log(pDataModule);
             pDataModule.forEach(element => {
-                /*console.log(element.dataset.module);*/ 
-                switch(element.dataset.module){
-                    case 'color': 
+                /*console.log(element.dataset.module);*/
+                switch (element.dataset.module) {
+                    case 'color':
                         let color = element.dataset.color || '#f00';
-                        
-                    break;
-                    case 'font': 
-                    case 'magie': 
-
-                    break;
-                    case 'after': 
+                        element.addEventListener('mouseover', function () {
+                            this.style.setProperty('color', color);
+                        });
+                        element.addEventListener('mouseleave', function () {
+                            this.style.removeProperty('color');
+                        });
+                        break;
+                    case 'font':
+                    case 'magie':
+                        let weight = element.dataset.weight || 'lighter';
+                        element.addEventListener('mouseover', function () {
+                            this.style.setProperty('font-weight', weight);
+                        });
+                        element.addEventListener('mouseleave', function () {
+                            this.style.removeProperty('font-weight');
+                        });
+                        break;
+                    case 'after':
                     default:
-                        /* code */
+                    /* code */
                 }
+            });
+
+            /* pointeur sur un tableau */
+            /* récupérer la liste des td possedant les attribut data-column ET data-line */
+            let coordonnees = qSAll('[data-column][data-line]');
+            //console.log(coordonnees);
+
+            let xValue = qS('#xValue');
+            let yValue = qS('#yValue');
+            let labelX = qS('#labelX');
+            let labelY = qS('#labelY');
+            labelX.innerHTML = `X : <b>${xValue.value}</b>&nbsp;`;
+            labelY.innerHTML = `Y : <b>${yValue.value}</b>&nbsp;`;
+            qSAll(`[data-column="${yValue.value}"]`).forEach(td => {
+                td.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+            });
+            qS(`[data-line="${xValue.value}"`).parentNode.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+            /* quand le pointeur "bouge" sur le tableau */
+            coordonnees.forEach((element) => {
+                element.addEventListener('mouseover', function () {
+                    let column = element.dataset.column;
+                    let line = element.dataset.line;
+                    //console.log(column, line);
+                    qSAll(`[data-column="${column}"]`).forEach(td => {
+                        td.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                    });
+                    element.parentNode.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                    labelX.innerHTML = `X : <b>${line}</b>&nbsp;`;
+                    xValue.value = column;
+                    labelY.innerHTML = `Y : <b>${column}</b>&nbsp;`;
+                    yValue.value = line;
+                });
+                element.addEventListener('mouseout', function () {
+                    qSAll(`td[data-column]`).forEach(td => {
+                        td.style.removeProperty('background-color');
+                    });
+                    element.parentNode.style.removeProperty('background-color');
+                    labelX.innerHTML = `X : <b>0</b>&nbsp;`;
+                    xValue.value = 0;
+                    labelY.innerHTML = `Y : <b>0</b>&nbsp;`;
+                    yValue.value = 0;
+                });
+            });
+
+            xValue.onchange = (event)=>{
+                console.log(event);
+            };
+
+            /*
+            équivalent à
+            xValue.addEventListener('change', (event)=>{
+                console.log(event);
+            });
+            */
+
+            let colorNow = 'bg-danger';
+            qSAll('#p4 th').forEach(th=>{
+                let coord = 0;
+                th.addEventListener('click', function(){
+                    coord = th.dataset.col;
+                    for(i = 6; i > 0; i--){
+                        let cell = qS(`td[data-col="${coord}"][data-row="${i}"]`);
+                        if(!cell.classList.contains('bg-danger') && !cell.classList.contains('bg-primary')){
+                            cell.classList.add(colorNow);
+                            /* effectuer les test "si on a gagner" */
+                            colorNow = ('bg-danger' === colorNow)? 'bg-primary': 'bg-danger';
+                            break;
+                        }
+                    }
+                });
             });
 
         });
@@ -106,63 +187,65 @@
                     </p>
                     <hr />
                     <p data-module="color">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="color" data-color="#09f">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="color" data-color="orange">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="font" data-weight="bold">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="magie">
                         Lorem ipsum dolor sit amet,
-                        consectetur adipisicing &nbsp;elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        consectetur adipisicing &nbsp;elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="after">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <hr />
                     <p>
                         Coordonnées : <span id="xy">x : &nbsp; - y : &nbsp;</span>
                     </p>
-                    
+
                     <p>
-                        <label>X : </label><input id="xValue" type="range" min="0" max="4" step="1" value="0" /><br />
-                        <label>y : </label><input id="yValue" type="range" min="0" max="4" step="1" value="0" />
+                        <label id="labelX">X : </label><input id="xValue" type="range" min="0" max="4" step="1"
+                            value="0" /><br />
+                        <label id="labelY">y : </label><input id="yValue" type="range" min="0" max="4" step="1"
+                            value="0" />
                     </p>
-                    
+
                     <table id="coord" class="table" style="width: 300px;">
                         <tr>
                             <td data-column="0" data-line="0">0 - 0</td>
