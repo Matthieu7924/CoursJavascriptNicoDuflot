@@ -6,12 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation Javascript Ecmascript</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
     <script>
 
         loaded(function () {
+            //console.log(qS('#btn').style);
+            qS('#btn').addEventListener('click', function(){
+                let cible = qS('#cible');
+                
+                console.log(cible.style);
+                //console.log(cible.style.color);
+                
+                if('' !== cible.style.color){
+                    cible.style.color = null;
+                    cible.style.removeProperty('font-weight');
+                }else{
+                    cible.style.setProperty('color', '#aacc00');
+                    cible.style.fontWeight = 'bold';
+                }
+            });
+
+            let btnClasse = qS('#btnClasse');
+            let cibleClasse = qS('#cibleClasse');
+            btnClasse.addEventListener('click', ()=>cibleClasse.classList.toggle('paragraphe-vert'));
+
+            let gauche = qS('#gauche');
+            let centre = qS('#centre');
+            let droite = qS('#droite');
+            let carre = qS('#carre');
+
+            gauche.addEventListener('click', ()=>carre.className = 'left');
+            droite.addEventListener('click', ()=>carre.className = 'right');
+            centre.addEventListener('click', ()=>carre.removeAttribute('class'));
+
             
+
         });
 
     </script>

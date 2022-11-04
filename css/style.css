@@ -1,0 +1,20 @@
+.paragraphe-vert{
+    color: #aacc00;
+    font-weight: bold;
+}
+
+#carre{
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    margin: 20px auto;
+    transition: transform 1s;
+}
+
+.left{
+    transform: translateX( calc( (100vw/2 - 100px)*-1) );
+}
+
+.right{
+    transform: translateX( calc( 100vw/2 - 100px) );
+}
