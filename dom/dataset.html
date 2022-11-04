@@ -12,7 +12,24 @@
     <script>
 
         loaded(function () {
-  
+            let pDataModule = qSAll('p[data-module]');
+            console.log(pDataModule);
+            pDataModule.forEach(element => {
+                /*console.log(element.dataset.module);*/ 
+                switch(element.dataset.module){
+                    case 'color': 
+                        let color = element.dataset.color || '#f00';
+                        
+                    break;
+                    case 'font': 
+                    case 'magie': 
+
+                    break;
+                    case 'after': 
+                    default:
+                        /* code */
+                }
+            });
 
         });
 
