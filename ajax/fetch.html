@@ -20,56 +20,78 @@
                     resultTHead.innerHTML = '';
                     resultTbody.innerHTML = '';
                     fetch(this.dataset.url)
-                    .then(response => {
-                        //console.log(response);
-                        return response.json();
-                    })
-                    .then(function( data ){
-                        //console.log(data);
-                        let tabResult = jsonResultSearch(data);
-                        resultTHead.innerHTML = tabResult[0];
-                        resultTbody.innerHTML = tabResult[1];
-                    })
-                    .catch( error=>{
-                        resultTbody.innerHTML = `<td class="alert alert-danger alert-dismissible fade show">
+                        .then(response => {
+                            //console.log(response);
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            //console.log(data);
+                            let tabResult = jsonResultSearch(data);
+                            resultTHead.innerHTML = tabResult[0];
+                            resultTbody.innerHTML = tabResult[1];
+                        })
+                        .catch(error => {
+                            resultTbody.innerHTML = `<td class="alert alert-danger alert-dismissible fade show">
                             <b>Erreur</b>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </td>`
-                    })
-                    .finally(()=>console.log('Fin de la requête'));
+                        })
+                        .finally(() => console.log('Fin de la requête'));
                 });
             });
 
             /* suggestion - recherche utilisateurs */
 
             let searchUser = qS('#searchUser');
-            searchUser.addEventListener('keyup', function(){
+            searchUser.addEventListener('keyup', function () {
                 let search = searchUser.value;
-                if(search.length >= 3){
+                if (search.length >= 3) {
                     resultTHead.innerHTML = '';
                     resultTbody.innerHTML = '';
                     fetch('../resource/users.json')
-                    .then(response => {
-                        //console.log(response);
-                        return response.json();
-                    })
-                    .then(function( data ){
-                        //console.log(data);
-                        let tabResult = jsonResultSearch(data, search);
-                        resultTHead.innerHTML = tabResult[0];
-                        resultTbody.innerHTML = tabResult[1];
-                    })
-                    .catch( error=>{
-                        resultTbody.innerHTML = `<td class="alert alert-danger alert-dismissible fade show">
+                        .then(response => {
+                            //console.log(response);
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            //console.log(data);
+                            let tabResult = jsonResultSearch(data, search);
+                            resultTHead.innerHTML = tabResult[0];
+                            resultTbody.innerHTML = tabResult[1];
+                        })
+                        .catch(error => {
+                            resultTbody.innerHTML = `<td class="alert alert-danger alert-dismissible fade show">
                             <b>Erreur</b>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </td>`
-                    })
-                    .finally(()=>console.log('Fin de la requête'));
-                }else{
+                        })
+                        .finally(() => console.log('Fin de la requête'));
+                } else {
                     resultTHead.innerHTML = '';
-                        resultTbody.innerHTML = '';
+                    resultTbody.innerHTML = '';
                 }
+            });
+
+            let play = qS('#play');
+            let ff1s = qS('#ff1s');
+            let rw1s = qS('#rw1s');
+            let video = qS('video')
+            play.addEventListener('click', function(){
+                if(video.paused){
+                    video.play();
+                    play.innerHTML = 'Pause';
+                }else{
+                    video.pause();
+                    play.innerHTML = 'Play';
+                }
+            });
+
+            ff1s.addEventListener('click', function(){
+                video.currentTime = video.currentTime + 1;
+            });
+
+            rw1s.addEventListener('click', function(){
+                video.currentTime = video.currentTime - 1;
             });
 
         });
@@ -155,31 +177,48 @@
                             bdd.json erreur
                         </button>
                     </p>
-                    </main>
-                </article>
-                <article class="col-lg-4">
-                    <header>
-                        <h2>Suggestion utilisateurs</h2>
-                    </header>
-                    <main>
-                        <h3>Utilisateur dans users</h3>
-                        <p>
-                            <input type="text" id="searchUser" value="" class="form-control" />
-                        </p>
-                    </main>
-                </article>
-            </section>
-            <section class="row">
-                <article class="col-lg-12">
-                    <table id="result" class="table table-striped">
-                        <thead class="table-dark">
-
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
                 </main>
+            </article>
+            <article class="col-lg-4">
+                <header>
+                    <h2>Suggestion utilisateurs</h2>
+                </header>
+                <main>
+                    <h3>Utilisateur dans users</h3>
+                    <p>
+                        <input type="text" id="searchUser" value="" class="form-control" />
+                    </p>
+                </main>
+            </article>
+        </section>
+        <section class="row">
+            <article class="col-lg-12">
+                <table id="result" class="table table-striped">
+                    <thead class="table-dark">
+
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </article>
+        </section>
+        <section class="row">
+            <article class="col-12">
+                <video>
+                    <source src="../media/Big_Buck_Bunny_360_10s_1MB.mp4" />
+                </video>
+                <div class="controls">
+                    <button id="play" class="btn btn-outline-primary pause">
+                        Lire / Pause
+                    </button>
+                    <button id="ff1s" class="btn btn-outline-primary pause">
+                        => 1s
+                    </button>
+                    <button id="rw1s" class="btn btn-outline-primary pause">
+                        <= 1s
+                    </button>
+                </div>
             </article>
         </section>
     </main>
