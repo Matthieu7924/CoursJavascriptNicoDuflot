@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +25,12 @@
         /* La boucle Pour */
 
         console.log('-------------------- boucle for -------------------');
-        for(let i = 0; i < cars.length; i++){
+        for (let i = 0; i < cars.length; i++) {
             console.log(`la valeur à l'index ${i} est ${cars[i]}`);
         }
 
         console.log('-------------------- boucle for in -------------------');
-        for(let index in cars){
+        for (let index in cars) {
             console.log(`la valeur à l'index ${index} est ${cars[index]}`);
         }
 
@@ -38,51 +39,51 @@
             nom: 'Duflot',
             prenom: 'Nicolas',
             age: 42,
-            presentation: function(){
+            presentation: function () {
                 return `bonjour, je m'appelle ${this.nom} ${this.prenom} et j'ai ${this.age} ans.`;
             }
         }
 
         console.log(obj.presentation());
 
-        for(let key in obj){
+        for (let key in obj) {
             console.log(`${key} contient ${obj[key]} du type ${typeof obj[key]}`);
         }
 
         /* depuis es6 for of */
         console.log('-------------------- boucle for of -------------------');
-        for(let value of cars){
+        for (let value of cars) {
             console.log(`la valeur actuelle dans cars est ${value}`);
         }
 
         /* tant que et faire tant que */
         console.log('-------------------- boucle while -------------------');
         let cpt = 0;
-        while(cpt < cars.length){
+        while (cpt < cars.length) {
             console.log(cars[cpt]);
             cpt++;
         }
 
         console.log('-------------------- boucle do while -------------------');
         cpt = 0;
-        do{
+        do {
             console.log(cars[cpt]);
             cpt++;
-        }while(cpt < cars.length)
+        } while (cpt < cars.length)
 
         console.log('-------------------- sortir ptématurément d\'une boucle -------------------');
         cpt = 0;
-        do{
-            if(cars[cpt] === 'Ford'){
+        do {
+            if (cars[cpt] === 'Ford') {
                 console.log(cars[cpt]);
                 break;
             }
             cpt++;
-        }while(cpt < cars.length)
+        } while (cpt < cars.length)
 
         /* la méthode forEach() */
         console.log('-------------------- forEach() -------------------');
-        cars.forEach(function(value, index, tab){
+        cars.forEach(function (value, index, tab) {
             console.log(`la valeur ${value} se trouve à l'index ${index} du tableau : ${tab}`);
         });
 
@@ -91,8 +92,8 @@
         console.log(tabNumber);
 
         console.log('-------------------- forEach() -------------------');
-        tabNumber.forEach(function(value, index, tab){
-            tab[index] = value*0.3;
+        tabNumber.forEach(function (value, index, tab) {
+            tab[index] = value * 0.3;
         });
 
         console.log(tabNumber);
@@ -104,7 +105,7 @@
         */
 
         console.log('------------- méthode entries() --------------');
-        for(let entry of cars.entries()){
+        for (let entry of cars.entries()) {
             console.log(entry);
             console.log(entry[0]);
             console.log(entry[1]);
@@ -112,14 +113,14 @@
 
         /* la méthode .map() est l'équivalent d'un forEach() mais est propres aux tableaux */
         console.log('-------------------- .map() -------------------');
-        cars.map(function(value, index, tab){
+        cars.map(function (value, index, tab) {
             console.log(`la valeur ${value} se trouve à l'index ${index} du tableau : ${tab}`);
         });
 
 
         /* la méthode .keys() */
         console.log('-------------------- .keys() -------------------');
-        for(let key of cars.keys()){
+        for (let key of cars.keys()) {
             console.log(key, cars[key]);
         }
 
@@ -185,7 +186,7 @@
         cloneCars.pop();
         console.log(cloneCars);
         console.log(cars);
-        */ 
+        */
 
         /* slice() */
         let cloneCars = cars.slice();
@@ -213,13 +214,13 @@
         test = tabTest.sort().reverse().join('');
         console.log(test);
 
-        carsTest = [ ['Fiat', 1956], ['Kya', 1995], ['Kya', 1990], ['Ford', 1950] ];
+        carsTest = [['Fiat', 1956], ['Kya', 1995], ['Kya', 1990], ['Ford', 1950]];
         console.table(carsTest);
         carsTest.sort();
         console.table(carsTest);
 
         /* les tableaux à 2 voir 3 dimension n'existe pas vraiment en JS */
-        let tab2d = [ ['a', 'b', 'c'], [12,13,12,15,14], [10, 23, 56, 4] ];
+        let tab2d = [['a', 'b', 'c'], [12, 13, 12, 15, 14], [10, 23, 56, 4]];
         console.table(tab2d);
         /* afficher  */
         console.log(tab2d[1][1]);
@@ -231,15 +232,15 @@
 
         /* créer une matrice devient un peu galère */
         let matrice = [
-            [1,  2,  3,  4,  5 ],
+            [1, 2, 3, 4, 5],
             [12, 14, 75, 56, 42]
         ];
 
         /* pour parcourir la matrice */
         console.log('--- parcourir la matrice "2d" ---------');
-        for(let value of matrice){
+        for (let value of matrice) {
             let line = '';
-            for(subValue of value){
+            for (subValue of value) {
                 line += subValue + ' ';
                 //console.log(subValue);
             }
@@ -247,8 +248,8 @@
         }
 
         console.log('--- parcourir la matrice "2d" ---------');
-        matrice.map(function(value, index){
-            value.map(function(subValue, subIndex){
+        matrice.map(function (value, index) {
+            value.map(function (subValue, subIndex) {
                 console.log(`X : ${index}, Y : ${subIndex} => ${subValue}`);
             });
         });
@@ -258,7 +259,7 @@
 
         console.log('--------- .find() ------------');
         let arrayNum = [5, 8, 12, 130, 5, 3, 44];
-        let found = arrayNum.find(function(element){
+        let found = arrayNum.find(function (element) {
             return 20 < element;
             /*
             if(20 < element){
@@ -270,12 +271,12 @@
         console.log(found);
 
         /* pour récupérertous les éléments correpsondant à une condition .filter() */
-        let foundAll = arrayNum.filter(function(element){
+        let foundAll = arrayNum.filter(function (element) {
             return 20 < element;
         });
 
         console.table(foundAll);
-        
+
         /* opérateur arrow */
         /*
         function(){
@@ -307,7 +308,7 @@
         (variable)=>variable;
         
         */
-        let foundAll2 = arrayNum.filter((element)=> 20 < element);
+        let foundAll2 = arrayNum.filter((element) => 20 < element);
 
         /*
         les fonction de rappel (callback functions) ou fonctions 
@@ -319,18 +320,18 @@
         console.log('---------------- les conséquences --------------');
         let monObjet = {
             numbers: [1, 2, 56, 13, 123],
-            affTab: function(){
+            affTab: function () {
                 console.log(this);
                 let _this = this;
-                this.numbers.forEach(function(value){
+                this.numbers.forEach(function (value) {
                     console.log(this);
                     console.log(_this);
                 });
             },
-            affTab2: function(){
+            affTab2: function () {
                 console.log(this);
                 let _this = this;
-                this.numbers.forEach((value)=>{
+                this.numbers.forEach((value) => {
                     console.log(this);
                 });
             }
@@ -355,11 +356,11 @@
             'mangue',
             'courgette',
             'fraise',
-            'brocoli', 
+            'brocoli',
             'haricot',
             'mangue'
         ];
-        
+
         console.log(fruitEtLegumes);
         fruitEtLegumes.sort();
         let tabTemp = [];
@@ -371,13 +372,13 @@
         si la "case" avec une clef existe pas, on augmente de 1 sa valeur
 
         */
-        fruitEtLegumes.forEach(function(value, index){
-            if(tabTemp[value] === undefined ){
+        fruitEtLegumes.forEach(function (value, index) {
+            if (tabTemp[value] === undefined) {
                 //console.log(tabTemp[value]);
                 tabTemp[value] = 1;
-            }else{
+            } else {
                 //console.log(tabTemp[value]);
-                tabTemp[value] = tabTemp[value]+1;
+                tabTemp[value] = tabTemp[value] + 1;
             }
         });
 
@@ -388,11 +389,11 @@
         /* 
         pour chaque fruit (key du tableau) de tabTemp
         */
-        for(key in tabTemp){
+        for (key in tabTemp) {
             /* la "clef" fruit devient une valeur du tableau des fruit */
             fruitEtLegumes.push(key);
             /* si la valeur associée à la clef fruit est supérieure à 1, on alimente le tableau des doublons */
-            if(tabTemp[key] > 1){
+            if (tabTemp[key] > 1) {
                 tabDoublons.push([key, tabTemp[key]]);
             }
         }
@@ -405,52 +406,68 @@
         let legumeDoublons = new Map();
         legumeDoublons.set('fraise', 1);
         legumeDoublons.set('brocoli', 1);
-        
+
         console.log(legumeDoublons.get('fraise'));
 
     </script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Introduction
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
-                  <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
-                  <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
-                  <li><a class="dropdown-item" href="../introduction/destructuration.html">La destructuration</a></li>
-                  <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+            <a class="navbar-brand" href="../">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
+                            <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">La
+                                    destructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            DOM
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+                            <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            AJAX
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../ajax/index.html">Promesses</a></li>
+                            <li><a class="dropdown-item" href="../ajax/fetch.html">AJAX avec Fetch</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  DOM
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
-                  <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
-      </nav>
-      <main class="container">
+    </nav>
+    <main class="container">
         <section class="row">
             <article class="col">
                 <header>
@@ -466,6 +483,7 @@
                 </main>
             </article>
         </section>
-      </main>
+    </main>
 </body>
+
 </html>

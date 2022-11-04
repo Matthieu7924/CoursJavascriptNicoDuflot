@@ -9,7 +9,7 @@
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
     <script>
-        
+
         loaded(function () {
             let mainArticle = qS('body > main > section > article > main');
             console.log(mainArticle);
@@ -27,8 +27,8 @@
             //console.log(test);
 
             headingsArticle.forEach((title, key, tab) => {
-                title.addEventListener('click', function(){
-                    console.log( `
+                title.addEventListener('click', function () {
+                    console.log(`
 title.innerText : ${this.innerText},
 key             : ${key},
 tab             : ${tab},
@@ -37,7 +37,7 @@ this.nodeName   : ${this.nodeName},
                 });
             });
 
-            qS('body').addEventListener('click', (event)=>{
+            qS('body').addEventListener('click', (event) => {
                 //console.log(event);
                 qS('#ouEstLeCLic').innerText = `Coordonnées du clic : 
 X : ${event.offsetX}
@@ -49,22 +49,22 @@ Cible du clic : ${event.target}
             let allP = qSAll('p:not(#special)');
             console.log(allP);
 
-            allP.forEach(paragraphe=>{
-                paragraphe.addEventListener('click', function(){
+            allP.forEach(paragraphe => {
+                paragraphe.addEventListener('click', function () {
                     qS('#showP').innerText = this.innerHTML;
-                    this.childNodes.forEach( (value)=>{
+                    this.childNodes.forEach((value) => {
                         console.log(value);
-                    } );
+                    });
                 });
             });
 
             let imgOver = qS('#imgOver');
 
-            imgOver.addEventListener('mouseover', function(){
+            imgOver.addEventListener('mouseover', function () {
                 this.setAttribute('src', '../images/pip-boy-thumb-up.png');
                 this.setAttribute('alt', 'Pip boy avec le bras droit');
-                this.parentNode.childNodes.forEach( figureChild=>{
-                    if('FIGCAPTION' === figureChild.nodeName){
+                this.parentNode.childNodes.forEach(figureChild => {
+                    if ('FIGCAPTION' === figureChild.nodeName) {
                         figureChild.innerHTML = 'Pip boy avec le bras droit';
                     }
                 });
@@ -72,11 +72,11 @@ Cible du clic : ${event.target}
 
             /* mini exo : quand le pointeur soort de l'image */
 
-            imgOver.addEventListener('mouseleave', function(){
+            imgOver.addEventListener('mouseleave', function () {
                 this.setAttribute('src', '../images/pip-boy-thumb-down.png');
                 this.setAttribute('alt', 'Pip boy sans le bras droit');
-                this.parentNode.childNodes.forEach( figureChild=>{
-                    if('FIGCAPTION' === figureChild.nodeName){
+                this.parentNode.childNodes.forEach(figureChild => {
+                    if ('FIGCAPTION' === figureChild.nodeName) {
                         figureChild.innerHTML = 'Pip boy sans le bras droit';
                     }
                 });
@@ -112,16 +112,27 @@ Cible du clic : ${event.target}
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          DOM
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            DOM
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
-                          <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
-                          <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
-                          <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
+                            <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+                            <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
                         </ul>
-                      </li>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            AJAX
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../ajax/index.html">Promesses</a></li>
+                            <li><a class="dropdown-item" href="../ajax/fetch.html">AJAX avec Fetch</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -138,11 +149,11 @@ Cible du clic : ${event.target}
                 </header>
                 <main>
                     <p>
-                        le <b>DOM</b> nous permet de repérer, analyser, modifier et 
+                        le <b>DOM</b> nous permet de repérer, analyser, modifier et
                         supprimer des éléments de la page HTML
                     </p>
                     <p>
-                        Il faut que tous les éléments soient chargés pour qu'il soit 
+                        Il faut que tous les éléments soient chargés pour qu'il soit
                         possible d'agir sur eux avec JS.
                         On écoute l'évènement de la fenêtre DOMContentLoaded qui survient
                         quand la page est totalement chargée.
@@ -161,19 +172,20 @@ Cible du clic : ${event.target}
                         </button>
                     </p>
                     <div id="showP" style="border: 1px solid lightseagreen; border-radius: 5px;">
-                        
+
                     </div>
                     <p id="special">
-                        Lorem ipsum dolor sit amet 
-                        consectetur adipisicing elit. 
-                        Nihil hic numquam magnam ullam, 
-                        ea odio illo doloremque molestias 
-                        accusamus corporis corrupti doloribus 
-                        ab! Mollitia provident quibusdam libero, 
+                        Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit.
+                        Nihil hic numquam magnam ullam,
+                        ea odio illo doloremque molestias
+                        accusamus corporis corrupti doloribus
+                        ab! Mollitia provident quibusdam libero,
                         fugit a perferendis.
                     </p>
                     <figure>
-                        <img src="../images/pip-boy-thumb-down.png" alt="Pip boy sans le bras droit" width="200" id="imgOver" />
+                        <img src="../images/pip-boy-thumb-down.png" alt="Pip boy sans le bras droit" width="200"
+                            id="imgOver" />
                         <figcaption>
                             Pip boy sans le bras droit
                         </figcaption>

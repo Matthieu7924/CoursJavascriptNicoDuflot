@@ -52,16 +52,16 @@
                 }
             });
 
-            btnClearSessionItem.addEventListener('click', function(){
+            btnClearSessionItem.addEventListener('click', function () {
                 sessionStorage.removeItem('sessionUserName');
                 dataSession.innerHTML = '<b>Pas de sessionUserName d\'enregistré</b>';
             });
-            
-            btnClearSession.addEventListener('click', function(){
+
+            btnClearSession.addEventListener('click', function () {
                 sessionStorage.clear();
                 dataSession.innerHTML = '<b>La session a été effacée</b>';
             });
-            
+
             /* localStorage */
             let btnLocal = qS('#btnLocal');
             let localUser = qS('#localUser');
@@ -83,12 +83,12 @@
                 }
             });
 
-            btnClearLocalItem.addEventListener('click', function(){
+            btnClearLocalItem.addEventListener('click', function () {
                 localStorage.removeItem('localUserName');
                 dataLocal.innerHTML = '<b>Pas de localUserName d\'enregistré</b>';
             });
-            
-            btnClearLocal.addEventListener('click', function(){
+
+            btnClearLocal.addEventListener('click', function () {
                 localStorage.clear();
                 dataLocal.innerHTML = '<b>Le local a été effacée</b>';
             });
@@ -106,11 +106,11 @@
             console.log(dateNow.toLocaleString());
             console.log(dateNow.toUTCString());
             console.log(dateNow.getFullYear());
-            console.log(dateNow.getMonth()+1);
+            console.log(dateNow.getMonth() + 1);
             console.log(dateNow.getTime());
             console.log(dateNow.getTime() + (1 * 24 * 60 * 60 * 1000));
             let dateEnd = new Date();
-            dateEnd.setTime(dateEnd.getTime() + (1 * 24 * 60 * 60 * 1000) + (1000 * 60 * 60) );
+            dateEnd.setTime(dateEnd.getTime() + (1 * 24 * 60 * 60 * 1000) + (1000 * 60 * 60));
             console.log(dateEnd);
             console.log(typeof dateEnd);
             console.log(typeof dateNow);
@@ -149,14 +149,14 @@
             let btnEmptyCookieValue = qS('#btnEmptyCookieValue');
             let btnClearCookie = qS('#btnClearCookie');
 
-            if(getCookie('monCookie') || getCookie('monCookie') === ''){
+            if (getCookie('monCookie') || getCookie('monCookie') === '') {
                 dataCookieValue.innerHTML = `<b>monCookie : ${getCookie('monCookie')}</b>`;
-            }else{
+            } else {
                 dataCookieValue.innerHTML = `<b>Pas de cookie 'monCookie' d'enregistré</b>`;
             }
 
-            btnCookieValue.addEventListener('click', ()=>{
-                if(cookieValue.value !== ''){
+            btnCookieValue.addEventListener('click', () => {
+                if (cookieValue.value !== '') {
                     setCookie('monCookie', cookieValue.value, 1);
                     dataCookieValue.innerHTML = `<b>monCookie : ${getCookie('monCookie')}</b>`;
                     //console.log(document.cookie);
@@ -165,8 +165,8 @@
             });
 
             /* vider le cookie monCookie */
-            btnEmptyCookieValue.addEventListener('click', ()=>{ 
-                if(getCookie('monCookie')){
+            btnEmptyCookieValue.addEventListener('click', () => {
+                if (getCookie('monCookie')) {
                     setCookie('monCookie', '', 1);
                     dataCookieValue.innerHTML = `<b>monCookie : ${getCookie('monCookie')}</b>`;
                 }
@@ -174,7 +174,7 @@
             });
 
             /* supprimer le cookie monCookie */
-            btnClearCookie.addEventListener('click', ()=>{ 
+            btnClearCookie.addEventListener('click', () => {
                 setCookie('monCookie', '', -1);
                 dataCookieValue.innerHTML = `<b>Pas de cookie 'monCookie' d'enregistré</b>`;
                 console.log(document.cookie);
@@ -210,16 +210,27 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          DOM
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            DOM
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
-                          <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
-                          <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
-                          <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
+                            <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+                            <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
                         </ul>
-                      </li>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            AJAX
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../ajax/index.html">Promesses</a></li>
+                            <li><a class="dropdown-item" href="../ajax/fetch.html">AJAX avec Fetch</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

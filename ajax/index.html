@@ -6,45 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation Javascript Ecmascript</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
     <script>
-
         loaded(function () {
-            //console.log(qS('#btn').style);
-            qS('#btn').addEventListener('click', function(){
-                let cible = qS('#cible');
-                
-                console.log(cible.style);
-                //console.log(cible.style.color);
-                
-                if('' !== cible.style.color){
-                    cible.style.color = null;
-                    cible.style.removeProperty('font-weight');
-                }else{
-                    cible.style.setProperty('color', '#aacc00');
-                    cible.style.fontWeight = 'bold';
-                }
-            });
-
-            let btnClasse = qS('#btnClasse');
-            let cibleClasse = qS('#cibleClasse');
-            btnClasse.addEventListener('click', ()=>cibleClasse.classList.toggle('paragraphe-vert'));
-
-            let gauche = qS('#gauche');
-            let centre = qS('#centre');
-            let droite = qS('#droite');
-            let carre = qS('#carre');
-
-            gauche.addEventListener('click', ()=>carre.className = 'left');
-            droite.addEventListener('click', ()=>carre.className = 'right');
-            centre.addEventListener('click', ()=>carre.removeAttribute('class'));
-
-
 
         });
-
     </script>
 </head>
 
@@ -105,41 +72,29 @@
     </nav>
     <main class="container">
         <section class="row">
-            <article class="col-lg-12">
+            <article class="col">
                 <header>
-                    <h2>Agir sur le CSS</h2>
+                    <h2>AJAX - Asynchronous JavaScript and Xml</h2>
                 </header>
                 <main>
-                    <button id="btn" class="btn btn-secondary">
-                        Ajouter de la couleur
-                    </button>
-                    <p id="cible">
-                        Lorem ipsum dolor sit, amet consectetur 
-                        adipisicing elit. Numquam explicabo 
-                        deleniti beatae dolores quisquam esse, 
-                        dolorum atque architecto repellat quo ad 
-                        earum laudantium tenetur quidem aliquid 
-                        rem quos voluptatibus a?
+                    <h3>Promesses</h3>
+                    <p>
+                        Les promesse c'est une facçon de "lancer" une fonction en mode asynchrone : 
+                        son exécution se fait sans "blocage" de la page : on n'attend pas le retour de la 
+                        fonction pour continuer le script car on la déclare "en attente de réponse", et quand 
+                        son traitement est fini c'est à ce moment que le retour intervient
                     </p>
-                    <button id="btnClasse" class="btn btn-secondary">
-                        Ajouter de la couleur en classe
-                    </button>
-                    <p id="cibleClasse" class="times">
-                        Lorem ipsum dolor sit, amet consectetur 
-                        adipisicing elit. Numquam explicabo 
-                        deleniti beatae dolores quisquam esse, 
-                        dolorum atque architecto repellat quo ad 
-                        earum laudantium tenetur quidem aliquid 
-                        rem quos voluptatibus a?
+                    <p>
+                        <button class="btn btn-secondary btn-sm" id="btn">
+                            Récupérer une info
+                        </button>
+                        <button class="btn btn-secondary btn-sm " id="btnTest">
+                            Afficher coucou en console
+                        </button>
                     </p>
-                    <p class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary" id="gauche">Gauche</button>
-                        <button type="button" class="btn btn-primary" id="centre">Centre</button>
-                        <button type="button" class="btn btn-primary" id="droite">Droite</button>
+                    <p id="result">
+                        
                     </p>
-                    <div id="carre">
-
-                    </div>
                 </main>
             </article>
         </section>

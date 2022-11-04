@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +24,7 @@
         fonction "simple" (sans paramètres d'appel) 
         */
 
-        function helloWorld()
-        {
+        function helloWorld() {
             return 'Hello World';
         }
 
@@ -41,7 +41,7 @@
          * @param {string} nom - The string
          * @param {number} age - The string
         */
-        function helloYou(prenom, nom, age){
+        function helloYou(prenom, nom, age) {
             return `Hello ${prenom} ${nom}, looking good for a ${age} years old ;)`;
         }
 
@@ -75,9 +75,9 @@
 
         */
 
-        function addition(...valeurs){
+        function addition(...valeurs) {
             let resultat = 0;
-            for( value of valeurs){
+            for (value of valeurs) {
                 //resultat = resultat + value;
                 //resultat += value; // plus préconisé par es6
                 /*
@@ -87,12 +87,12 @@
                 */
                 // et voilà le truc utile : le ternaire !
                 // (condition)? résultat si condition vraie : resultat si condition fausse;
-                resultat += (parseFloat(value))? parseFloat(value): 0;
+                resultat += (parseFloat(value)) ? parseFloat(value) : 0;
             }
             return resultat;
         }
 
-        console.log(addition(1,2,3,4,5,6,'toto',8,9));
+        console.log(addition(1, 2, 3, 4, 5, 6, 'toto', 8, 9));
 
         /*
         la structure de test try - catch permet de tester l'éxécution d'une fonction ou de code,
@@ -101,18 +101,18 @@
         affichable
         */
 
-        function testTryCatch(nom, prenom, age){
-            if(18 < age){
+        function testTryCatch(nom, prenom, age) {
+            if (18 < age) {
                 let res = 'personne mineure';
-            }else{
+            } else {
                 let res = 'personne majeure';
             }
             return res;
         }
 
-        try{
+        try {
             console.log(testTryCatch('Duflot', 'Nicolas', 42));
-        }catch(error){
+        } catch (error) {
             console.error(`il y a une erreur : ${error}`);
         }
 
@@ -120,10 +120,10 @@
         fonction de rappel (callback function) ou fonction anomyne;
         */
 
-        let maFonctionAnonyme = function(name = null){
-            if(null === name){
+        let maFonctionAnonyme = function (name = null) {
+            if (null === name) {
                 return 'Hello Kitty';
-            }else{
+            } else {
                 return `Hello ${name}`;
             }
         };
@@ -137,10 +137,10 @@
         (fonctionAnonyme(paramètres))(contenu des paramètres);
         */
         (
-            (name = null)=>{
-                if(null === name){
+            (name = null) => {
+                if (null === name) {
                     console.log('Hello Kitty');
-                }else{
+                } else {
                     console.log(`Hello ${name}`);
                 }
             }
@@ -150,47 +150,63 @@
 
     </script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Introduction
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
-                  <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
-                  <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
-                  <li><a class="dropdown-item" href="../introduction/destructuration.html">La destructuration</a></li>
-                  <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+            <a class="navbar-brand" href="../">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
+                            <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">La
+                                    destructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            DOM
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+                            <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            AJAX
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../ajax/index.html">Promesses</a></li>
+                            <li><a class="dropdown-item" href="../ajax/fetch.html">AJAX avec Fetch</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  DOM
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
-                  <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
-      </nav>
-      <main class="container">
+    </nav>
+    <main class="container">
         <section class="row">
             <article class="col">
                 <header>
@@ -203,6 +219,7 @@
                 </main>
             </article>
         </section>
-      </main>
+    </main>
 </body>
+
 </html>

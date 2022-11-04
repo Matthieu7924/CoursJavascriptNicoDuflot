@@ -1,264 +1,276 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation Javascript Ecmascript</title>
-    <link rel="stylesheet" href="../css/bootstrap.css" />
-    <script src="../js/bootstrap.bundle.js"></script>
-    <script>
-        /* script JS */
-        /**
-         * 
-         * Les commentaire du JS en bloc
-         * 
-        */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation Javascript Ecmascript</title>
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <script src="../js/bootstrap.bundle.js"></script>
+  <script>
+    /* script JS */
+    /**
+     * 
+     * Les commentaire du JS en bloc
+     * 
+    */
 
-        /* variables : déclaration */
-        var prenom = 'Jean';
-        console.log('var prénom : ', prenom);
-        console.log('var prénom : ' + prenom); // INTERDIT !!!!!
-        console.log(`var prénom : ${prenom}`); // interpolation de texte fort pratique au demeurant
+    /* variables : déclaration */
+    var prenom = 'Jean';
+    console.log('var prénom : ', prenom);
+    console.log('var prénom : ' + prenom); // INTERDIT !!!!!
+    console.log(`var prénom : ${prenom}`); // interpolation de texte fort pratique au demeurant
 
-        function affPrenom(){
-            console.log(prenom);
-            prenom = 'Jon';
-        }
+    function affPrenom() {
+      console.log(prenom);
+      prenom = 'Jon';
+    }
 
-        affPrenom();
-        console.log(`var prénom : ${prenom}`);
+    affPrenom();
+    console.log(`var prénom : ${prenom}`);
 
-        let nom = 'Neige';
-        console.log(nom);
+    let nom = 'Neige';
+    console.log(nom);
 
-        function affNom(){
-            let nom = '';
-            console.log(nom);
-            nom = 'Sno';
-        }
+    function affNom() {
+      let nom = '';
+      console.log(nom);
+      nom = 'Sno';
+    }
 
-        affNom();
-    
-        console.log(nom);
+    affNom();
 
-        const TEST = 'test';
-        //TEST = 'Ha ha'; // INTERDIT : une constante NE DOIT PAS évoluer. 
+    console.log(nom);
 
-        console.log(typeof nom);
-        let unNombre  = 42;
-        console.log(typeof unNombre);
+    const TEST = 'test';
+    //TEST = 'Ha ha'; // INTERDIT : une constante NE DOIT PAS évoluer. 
 
-        let unObjetLiteral = {
-            unNombre: 42,
-            hello: function(){
-                console.log('hello world');
-            }
-        };
+    console.log(typeof nom);
+    let unNombre = 42;
+    console.log(typeof unNombre);
 
-        console.log(typeof unObjetLiteral);
-        unObjetLiteral.hello();
-        console.log(unObjetLiteral.unNombre);
+    let unObjetLiteral = {
+      unNombre: 42,
+      hello: function () {
+        console.log('hello world');
+      }
+    };
 
-        console.log('papa ' + unObjetLiteral.unNombre + ' toto');
-        console.log(10 + unObjetLiteral.unNombre + ' toto');
-        console.log('papa ' + unObjetLiteral.unNombre + 10);
-        console.log( `papa ${ unObjetLiteral.unNombre + 10 } toto` );
+    console.log(typeof unObjetLiteral);
+    unObjetLiteral.hello();
+    console.log(unObjetLiteral.unNombre);
 
-        /**
-         * JS est un langage Prototypé
-        */
+    console.log('papa ' + unObjetLiteral.unNombre + ' toto');
+    console.log(10 + unObjetLiteral.unNombre + ' toto');
+    console.log('papa ' + unObjetLiteral.unNombre + 10);
+    console.log(`papa ${unObjetLiteral.unNombre + 10} toto`);
 
-        let tab = ['tata', 'toto'];
-        console.log(tab);
-        console.log(typeof tab);
-        
-        /* les constantes */
-        function foo(paysServeur, typeHote, travail){
-            /* code de la fonction */
-        }
+    /**
+     * JS est un langage Prototypé
+    */
 
-        const SERVERFR = 1;
-        const SERVEREN = 2;
-        const SERVERUS = 3;
-        const HOSTSUB = 2;
-        const ACTIONADD = 1;
-        const ACTIONMOD = 2;
+    let tab = ['tata', 'toto'];
+    console.log(tab);
+    console.log(typeof tab);
 
-        foo(SERVEREN, HOSTSUB, ACTIONMOD);
-        // foo(2, 2, 2);
+    /* les constantes */
+    function foo(paysServeur, typeHote, travail) {
+      /* code de la fonction */
+    }
 
-        /**
-         * JS est un langage "non typé"
-         * les variables sont typées par la valeur qu'elles reçoivent
-         * 
-         * Types
-         * [primitif]
-         * 
-         * number       -> nombre (entier, virgule flottante)
-         * bool         -> Booléen
-         * 
-         * [références]
-         * 
-         * String       -> chaîne de caractère
-         * Array        -> tableau
-         * Objets       -> objet
-         * JSON         -> JavaScript Object Notation
-         * 
-        */
+    const SERVERFR = 1;
+    const SERVEREN = 2;
+    const SERVERUS = 3;
+    const HOSTSUB = 2;
+    const ACTIONADD = 1;
+    const ACTIONMOD = 2;
 
-        /* Opérateurs */
+    foo(SERVEREN, HOSTSUB, ACTIONMOD);
+    // foo(2, 2, 2);
 
-        /**
-         * Mathématiques
-         * 
-         * + (utilisé aussi pour la concaténation)
-         * -
-         * / 
-         * % (modulo le reste entier d'un division)
-         * * 
-         * ** (puissance remplace Math.pow())
-         * 2 puissance 8    => Math.pow(2, 8)
-         *                  => 2**8
-         * Incrémentation / Décrémentation
-         * ++ variable++ ou ++variable
-         * -- variable-- ou --variable
-         * 
-        */
+    /**
+     * JS est un langage "non typé"
+     * les variables sont typées par la valeur qu'elles reçoivent
+     * 
+     * Types
+     * [primitif]
+     * 
+     * number       -> nombre (entier, virgule flottante)
+     * bool         -> Booléen
+     * 
+     * [références]
+     * 
+     * String       -> chaîne de caractère
+     * Array        -> tableau
+     * Objets       -> objet
+     * JSON         -> JavaScript Object Notation
+     * 
+    */
 
-        let nombreIncrement = 11;
-        nombreIncrement++;
-        console.log(nombreIncrement); // 12
-        console.log(nombreIncrement++); // 12 puis passe la variable à 13
-        console.log(++nombreIncrement); // passe la variable à 14 puis affiche 14
+    /* Opérateurs */
 
-        /**
-         * 
-         * Logiques
-         * 
-         * &&   (ET)
-         * ||   (OU)
-         * !    (NON)
-         * a = true; !a => false
-         * ^ (OU EXCLUSIF ou XOR)
-         * a = true;
-         * b = true;
-         * 
-         * a ^ b    => si a et !b   => true
-         *          => si !a et b   => true
-         *          => si !a et !b  => false
-         *          => si a et b    => false
-         * 
-         * Comparaison
-         * 
-         * < > <= >=
-         * 
-         * == !=    =>  comparatif de valeur            '2' ==  2 => true
-         * === !==  =>  comparatif de valeur stricte    '2' === 2 => false
-         *                                              2   === 2 => true
-         * 
-        */
+    /**
+     * Mathématiques
+     * 
+     * + (utilisé aussi pour la concaténation)
+     * -
+     * / 
+     * % (modulo le reste entier d'un division)
+     * * 
+     * ** (puissance remplace Math.pow())
+     * 2 puissance 8    => Math.pow(2, 8)
+     *                  => 2**8
+     * Incrémentation / Décrémentation
+     * ++ variable++ ou ++variable
+     * -- variable-- ou --variable
+     * 
+    */
 
-        /* yoda code */
+    let nombreIncrement = 11;
+    nombreIncrement++;
+    console.log(nombreIncrement); // 12
+    console.log(nombreIncrement++); // 12 puis passe la variable à 13
+    console.log(++nombreIncrement); // passe la variable à 14 puis affiche 14
 
-        /*
-        //en java
-        String a = 'Chaîne';
-        a.equal("Chaîne"); // retourne vrai
+    /**
+     * 
+     * Logiques
+     * 
+     * &&   (ET)
+     * ||   (OU)
+     * !    (NON)
+     * a = true; !a => false
+     * ^ (OU EXCLUSIF ou XOR)
+     * a = true;
+     * b = true;
+     * 
+     * a ^ b    => si a et !b   => true
+     *          => si !a et b   => true
+     *          => si !a et !b  => false
+     *          => si a et b    => false
+     * 
+     * Comparaison
+     * 
+     * < > <= >=
+     * 
+     * == !=    =>  comparatif de valeur            '2' ==  2 => true
+     * === !==  =>  comparatif de valeur stricte    '2' === 2 => false
+     *                                              2   === 2 => true
+     * 
+    */
 
-        String b = null;
-        b.equal("Chaîne"); // retourne une erreur de type NullPointerException
+    /* yoda code */
 
-        // en yoda code
-        "Chaîne".equal(b); // retourne false
+    /*
+    //en java
+    String a = 'Chaîne';
+    a.equal("Chaîne"); // retourne vrai
 
-        */
+    String b = null;
+    b.equal("Chaîne"); // retourne une erreur de type NullPointerException
 
-        
-    </script>
+    // en yoda code
+    "Chaîne".equal(b); // retourne false
+
+    */
+
+
+  </script>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Introduction
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
-                  <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
-                  <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
-                  <li><a class="dropdown-item" href="../introduction/destructuration.html">La destructuration</a></li>
-                  <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  DOM
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
-                  <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
-                  <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
-                </ul>
-              </li>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Introduction
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../introduction/index.html">Premiers Scripts</a></li>
+              <li><a class="dropdown-item" href="../introduction/tableaux.html">Les tableaux</a></li>
+              <li><a class="dropdown-item" href="../introduction/fonctions.html">Les fonctions</a></li>
+              <li><a class="dropdown-item" href="../introduction/destructuration.html">La destructuration</a></li>
+              <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-      <main class="container">
-        <section class="row">
-            <article class="col">
-                <header>
-                    <h2>Variables & Opérateurs</h2>
-                </header>
-                <main>
-                    <h3>Ecmascript</h3>
-                    <p>
-                        Ecmascript (es) est une norme sur laquelle s'appuie JS. (ActionScript => flash, TypeScript).
-                    </p>
-                    <p>
-                        La dernière norme ecmascript es7 (2017, très peu de différences avec es6)
-                    </p>
-                    <ul>
-                        <li>es1 - 1997</li>
-                        <li>es2 - 1999</li>
-                        <li>es4 - version abandonnée</li>
-                        <li>es5 - 2009</li>
-                        <li>es6 - 2015</li>
-                        <li>es7 - 2017</li>
-                    </ul>
-                    <p>
-                        Jusqu'en 2010, JS était mal considéré par les développeurs ( peu normé, trop permissif )
-                    </p>
-                    <p>
-                        L'arrivée de Google Chrome, avec en plus l'envie de Google de refaire fonctionner correctement JS.
-                        Création du moteur d'interprétation V8.
-                        => un boost des capacitées de JS et son éxécution
-                    </p>
-                    <p>
-                        Grâce au V8, des nouveau langages ou méthodes de développement sont arrivées, notemment NodeJs (2009), 
-                        qui s'appuis sur JS mais s'éxécute sur le serveur
-                    </p>
-                    <p>
-                        La convention du code en es6 est visible sur Github 
-                        <a href="https://github.com/elierotenberg/coding-styles/blob/master/es6.md" 
-                        target="_blank">
-                            es6
-                        </a>
-                    </p>
-            </article>
-        </section>
-      </main>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              DOM
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+              <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+              <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+              <li><a class="dropdown-item" href="../dom/dataset.html">Dataset</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              AJAX
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../ajax/index.html">Promesses</a></li>
+              <li><a class="dropdown-item" href="../ajax/fetch.html">AJAX avec Fetch</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <main class="container">
+    <section class="row">
+      <article class="col">
+        <header>
+          <h2>Variables & Opérateurs</h2>
+        </header>
+        <main>
+          <h3>Ecmascript</h3>
+          <p>
+            Ecmascript (es) est une norme sur laquelle s'appuie JS. (ActionScript => flash, TypeScript).
+          </p>
+          <p>
+            La dernière norme ecmascript es7 (2017, très peu de différences avec es6)
+          </p>
+          <ul>
+            <li>es1 - 1997</li>
+            <li>es2 - 1999</li>
+            <li>es4 - version abandonnée</li>
+            <li>es5 - 2009</li>
+            <li>es6 - 2015</li>
+            <li>es7 - 2017</li>
+          </ul>
+          <p>
+            Jusqu'en 2010, JS était mal considéré par les développeurs ( peu normé, trop permissif )
+          </p>
+          <p>
+            L'arrivée de Google Chrome, avec en plus l'envie de Google de refaire fonctionner correctement JS.
+            Création du moteur d'interprétation V8.
+            => un boost des capacitées de JS et son éxécution
+          </p>
+          <p>
+            Grâce au V8, des nouveau langages ou méthodes de développement sont arrivées, notemment NodeJs (2009),
+            qui s'appuis sur JS mais s'éxécute sur le serveur
+          </p>
+          <p>
+            La convention du code en es6 est visible sur Github
+            <a href="https://github.com/elierotenberg/coding-styles/blob/master/es6.md" target="_blank">
+              es6
+            </a>
+          </p>
+      </article>
+    </section>
+  </main>
 </body>
+
 </html>
