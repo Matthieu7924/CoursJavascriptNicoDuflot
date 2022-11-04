@@ -65,3 +65,33 @@ function cEO(element, attributes = {}){
 
     return newElement;
 }
+
+function jsonToTableObject(data){
+    let firstRound = true;
+    let thead = '<tr>';
+    let tbody = '';
+    data.forEach(element=>{
+        tbody = tbody + '<tr>';
+        for(key in element){
+            if(firstRound){
+                thead = thead + `<th>${key}</th>`;
+            }
+            if('object' !== typeof(element[key])){
+                tbody = tbody + `<td>${element[key]}</td>`;
+            }else{
+                tbody = tbody + `<td>`;
+                for(item in element[key]){
+                    if('object' !== typeof(element[key][item])){
+                        tbody = tbody + `<b>${item} : </b> <i>${element[key][item]}</i><br />`;
+                    }
+                }
+                tbody = tbody + '</td>';
+            }
+        }
+
+        firstRound = false;
+        tbody = tbody + '</tr>';
+    });
+
+    return [thead, tbody];
+}

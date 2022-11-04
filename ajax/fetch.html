@@ -10,7 +10,36 @@
     <script src="../js/script.js"></script>
     <script>
         loaded(function () {
-            
+            let resultTHead = qS('#result thead');
+            let resultTbody = qS('#result tbody');
+
+            /* aller chercher le ressource demandées avec fetch */
+
+            qSAll('button.read').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    resultTHead.innerHTML = '';
+                    resultTbody.innerHTML = '';
+                    fetch(this.dataset.url)
+                    .then(response => {
+                        console.log(response);
+                        return response.json();
+                    })
+                    .then(function( data ){
+                        console.log(data);
+                        let tabResult = jsonToTableObject(data);
+                        resultTHead.innerHTML = tabResult[0];
+                        resultTbody.innerHTML = tabResult[1];
+                    })
+                    .catch( error=>{
+                        resultTbody.innerHTML = `<td class="alert alert-danger alert-dismissible fade show">
+                            <b>Erreur</b>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </td>`
+                    })
+                    .finally(()=>console.log('Fin de la requête'));
+                });
+            });
+
         });
     </script>
 </head>
@@ -86,7 +115,7 @@
                         </button>
                         <button class="btn btn-secondary btn-sm read" data-url="../resource/bdd.json">
                             bdd.json
-                        </button> 
+                        </button>
                         <button class="btn btn-secondary btn-sm read" data-url="../resources/users.json">
                             Users.json erreur
                         </button>
@@ -94,25 +123,30 @@
                             bdd.json erreur
                         </button>
                     </p>
+                    </main>
+                </article>
+                <article class="col-lg-4">
+                    <header>
+                        <h2>Suggestion utilisateurs</h2>
+                    </header>
+                    <main>
+                        <h3>Utilisateur dans users</h3>
+                        <p>
+                            <input type="text" id="searchUser" value="" class="form-control" />
+                        </p>
+                    </main>
+                </article>
+            </section>
+            <section class="row">
+                <article class="col-lg-12">
                     <table id="result" class="table table-striped">
                         <thead class="table-dark">
-                            
+
                         </thead>
                         <tbody>
 
                         </tbody>
                     </table>
-                </main>
-            </article>
-            <article class="col-lg-4">
-                <header>
-                    <h2>Suggestion utilisateurs</h2>
-                </header>
-                <main>
-                    <h3>Utilisateur dans users</h3>
-                    <p>
-                        <input type="text" id="searchUser" value="" class="form-control" />
-                    </p>
                 </main>
             </article>
         </section>
