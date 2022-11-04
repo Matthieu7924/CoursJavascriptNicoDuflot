@@ -10,6 +10,78 @@
     <script src="../js/script.js"></script>
     <script>
         loaded(function () {
+            /*
+            Promise = créer une fonction asynchrone dont l'éxécution ne stoppe pas 
+            ou ne "fige" pas l'utilisation de la page
+
+            on appelle une fonction asynchrone
+            cette fonction va lancer une fonction qui est une promesse, 
+            cette promesse est qu'elle renvoi un résultat quoi que soit l'issue de son traitement
+            La fonction asynchrone est en attente de réponse de la promesse qui prend du temps et 
+            qui pourrai figer la page
+
+            */
+
+            let result = qS('#result');
+
+            /* créer la fonction asynchrone */
+
+            async function asyncCall(){
+                let resCall = await resolveAfterXSeconds(2);
+                return resCall;
+            }
+
+            /* 
+            la fonction appelée par la fonction asynchrone est une promesse 
+            une promesse ne renvoie que deux type de résultat
+            Soit la réussite du traitement      resolve()
+            Soit l'échec' du traitement         reject()
+            */
+
+            /* écriture d'une promesse */
+
+            function resolveAfterXSeconds(delay){
+                let randError = Math.floor(Math.random()*3 +1);
+
+                return new Promise( function(resolve, reject){
+                    setTimeout( function(){ 
+                        /* resultat de la promesse */
+                        if(2 !== randError){
+                            resolve('Le formateur aime les jeux de rôles');
+                        }else{
+                            reject( new Error(`L'information n'est pas disponible`) );
+                        }
+                     }, delay*1000);
+                });
+            }
+
+            let finAsynch = '';
+            qS('#btn').addEventListener('click', function(){
+                asyncCall()
+                .then( function(message){
+                    console.log(`async : ${message} `);
+                    finAsynch = finAsynch + message;
+                    return 'youpi';
+                })
+                .then( function(you){
+                    finAsynch = finAsynch + you;
+                })
+                .catch( function(error){
+                    console.log(`async : erreur `);
+                    console.error(error);
+                    finAsynch = finAsynch + error;
+                })
+                .finally(function(){
+                    console.log(`fin traitement async`);
+                    finAsynch = finAsynch + `<br />Fin de la promesse`;
+                    result.innerHTML = finAsynch;
+                    finAsynch = '';
+                });
+            });
+
+            qS('#btnTest').addEventListener('click', function(){
+                console.log('coucou');
+            });
 
         });
     </script>
