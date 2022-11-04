@@ -98,7 +98,7 @@
                     let val = input.value;
                     input.value = '';
                     input.focus();
-                    console.log(Array.from(list.children));
+                    //console.log(Array.from(list.children));
                     if(Array.from(list.children).map( (value)=> value.textContent.toLowerCase()).includes(val.toLowerCase())){
                         return;
                     }
@@ -119,9 +119,28 @@
 
             addItemBtn.addEventListener('click', ()=>addItemList(input, list));
             input.addEventListener('keyup', (event)=>{
-                if('Enter' === event.key){
+                if(13 === event.keyCode){
                     addItemList(input, list);
                 }                
+            });
+
+            /*
+            window.addEventListener('keyup', function(event){
+                console.log(event);
+            });
+            */
+
+            /* preventDefault() */
+            let subForm = qS('button.preventDefault');
+            subForm.addEventListener('click', (event)=>{
+                //console.log(event);
+                event.preventDefault();
+                /* contrôle du formulaire */
+                let nom = qS('input[name=nom]');
+                let prenom = qS('input[name=prenom]');
+                if('' !== nom.value && '' !== prenom.value){
+                    qS('#testPreventDefault').submit();
+                }
             });
 
         });
